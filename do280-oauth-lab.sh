@@ -14,7 +14,7 @@ case "$1" in
 		oc get oauth cluster -o yaml > default.yaml
 		echo -e "${YE}[*]${NC} Starting OAuth with users Lab ......"
 		oc new-project opslab
-		echo -e "${YE}[*]${NC} Objective \n- Create user: \n1.${OR}dd${NC} \n2.${OR}waiwai${NC} \n3.${OR}phyophyo${NC} \n4.${OR}yamin${NC} \n5.${OR}admin${NC} \n6.${OR}guest${NC} with password ${CY}redhat123${NC} using HTPasswd identify provider. \n- Give ${CY}admin${NC} permission to ${OR}dd${NC} and ${OR}admin${NC} users at ${GR}opslab${NC} project. \n- Create a group name ${CY}devops${NC} and add ${OR}waiwai${NC}, ${OR}phyophyo${NC}, ${OR}yamin${NC} to devops. \n- Give ${CY}edit${NC} permission to ${OR}devops${NC} group at opslab project. \n- Give ${CY}basic${NC} user(basic-users) permission to ${OR}guest${NC} user at opslab project. \n- Give ${CY}cluster admin${NC} permissions to ${OR}admin${NC} user. \n- Create deployment httpd using image ${BL}httpd:2.4${NC} in opslab project as an user in devops group."
+		echo -e "${YE}[*]${NC} Objective \n- Create user: \n1.${OR}dd${NC} \n2.${OR}waiwai${NC} \n3.${OR}phyophyo${NC} \n4.${OR}yamin${NC} \n5.${OR}admin${NC} \n6.${OR}guest${NC} with password ${CY}redhat123${NC} using HTPasswd(name - HTpasswd_Provider) identify provider. \n- Give ${CY}admin${NC} permission to ${OR}dd${NC} and ${OR}admin${NC} users at ${GR}opslab${NC} project. \n- Create a group name ${CY}devops${NC} and add ${OR}waiwai${NC}, ${OR}phyophyo${NC}, ${OR}yamin${NC} to devops. \n- Give ${CY}edit${NC} permission to ${OR}devops${NC} group at opslab project. \n- Give ${CY}basic${NC} user(basic-users) permission to ${OR}guest${NC} user at opslab project. \n- Give ${CY}cluster admin${NC} permissions to ${OR}admin${NC} user. \n- Create deployment httpd using image ${BL}httpd:2.4${NC} in opslab project as an user in devops group."
 		leave +0035
 		;;
 	grade)
@@ -48,12 +48,12 @@ case "$1" in
 		else
 			echo -e "${RE}[-]${NC} Failed group and users permissions at opslab project"
 		fi 
-		if [[ $(oc get $(oc get pod -o Name -n opslab 2>/dev/null) -n opslab -o json 2>/dev/null |jq -r .status.phase) == 'Running' ]]
-		then
-			echo -e "${GR}[+]${NC} Success running application httpd"
-		else
-			echo -e "${RE}[-]${NC} Failed running application httpd"
-		fi
+		#if [[ $(oc get $(oc get pod -o Name -n opslab 2>/dev/null) -n opslab -o json 2>/dev/null |jq -r .status.phase) == 'Running' ]]
+		#then
+		#	echo -e "${GR}[+]${NC} Success running application httpd"
+		#else
+		#	echo -e "${RE}[-]${NC} Failed running application httpd"
+		#fi
 		;;
 	finish)
 		echo -e "${RE}[-]${NC} delete user and identity"

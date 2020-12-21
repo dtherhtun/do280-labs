@@ -4,7 +4,7 @@ metadata:
   annotations:
     release.openshift.io/create-only: "true"
   creationTimestamp: "2020-12-16T15:23:26Z"
-  generation: 11
+  generation: 10
   managedFields:
   - apiVersion: config.openshift.io/v1
     fieldsType: FieldsV1
@@ -22,11 +22,11 @@ metadata:
     fieldsV1:
       f:spec:
         f:identityProviders: {}
-    manager: kubectl-edit
+    manager: Mozilla
     operation: Update
-    time: "2020-12-21T14:53:20Z"
+    time: "2020-12-21T14:12:54Z"
   name: cluster
-  resourceVersion: "2028214"
+  resourceVersion: "2015868"
   selfLink: /apis/config.openshift.io/v1/oauths/cluster
   uid: e64c14b7-61c8-4120-ab6d-87af3a4cd1b0
 spec:
@@ -42,3 +42,9 @@ spec:
     mappingMethod: claim
     name: github
     type: GitHub
+  - htpasswd:
+      fileData:
+        name: htpasswd-hpxcp
+    mappingMethod: claim
+    name: htpasswd
+    type: HTPasswd
