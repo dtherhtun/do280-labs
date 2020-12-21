@@ -1,0 +1,44 @@
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  annotations:
+    release.openshift.io/create-only: "true"
+  creationTimestamp: "2020-12-16T15:23:26Z"
+  generation: 9
+  managedFields:
+  - apiVersion: config.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:release.openshift.io/create-only: {}
+      f:spec: {}
+    manager: cluster-version-operator
+    operation: Update
+    time: "2020-12-16T15:23:26Z"
+  - apiVersion: config.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:identityProviders: {}
+    manager: kubectl-replace
+    operation: Update
+    time: "2020-12-20T10:13:08Z"
+  name: cluster
+  resourceVersion: "1544675"
+  selfLink: /apis/config.openshift.io/v1/oauths/cluster
+  uid: e64c14b7-61c8-4120-ab6d-87af3a4cd1b0
+spec:
+  identityProviders:
+  - github:
+      clientID: 69aae5d266319d83ea7a
+      clientSecret:
+        name: github-client-secret-pmbdg
+      hostname: ""
+      organizations:
+      - opslab
+      teams: []
+    mappingMethod: claim
+    name: github
+    type: GitHub
