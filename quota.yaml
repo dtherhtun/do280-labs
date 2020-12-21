@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: object-counts
+spec:
+  hard:
+    pods: "4"
+    cpu: "500m"
+    memory: "2Gi"
+    count/replicasets.extensions: "2"
+    services: "6"
