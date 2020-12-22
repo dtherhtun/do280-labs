@@ -36,7 +36,7 @@ case "$1" in
 		else
 			echo -e "${RE}[-]${NC} Failed dd to give admin to opslab project"
 		fi
-		if [ $(oc auth can-i 'create' 'deployments' --namespace opslab --as guest) == 'no' -a $(oc auth can-i 'list' 'pod' --namespace opslab --as guest) == 'yes' ]
+		if [ $(oc auth can-i 'get' 'deployments' --namespace opslab --as guest) == 'no' -a $(oc auth can-i 'list' 'pod' --namespace opslab --as guest) == 'no' ]
 		then
 			echo -e "${GR}[+]${NC} Success guest user to give view only to opslab project"
 		else
@@ -67,7 +67,7 @@ case "$1" in
 		echo -e "${RE}[-]${NC} remove httpasswd identity provider and secret"
 		oc get oauth cluster -o json | jq -r .spec.identityProviders[1].htpasswd.fileData.name | xargs oc -n openshift-config delete secret
 		oc get oauth cluster -o yaml > restore.yaml
-		tac restore.yaml | sed "1,6{d}" | tac | oc replace -f -
+		tac restore.yaml | sed "1,5{d}" | tac | oc replace -f -
 		echo -e "${RE}[-]${NC} delete opslab project"
 		oc delete project opslab
 		echo -e "${YE}[*]${NC} Finished"
